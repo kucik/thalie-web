@@ -1,0 +1,97 @@
+<?php
+
+$tpl->define('content','login.htm');
+$tpl->assign(array('ERROR'=>""));	
+
+if($action == 'login') {
+	$login = addslashes($param['login']);
+	$pass  = addslashes($param['pass']);
+		
+	$rs = $db->qy("SELECT id, login, privilegies FROM pwplayers WHERE login = '".$login."' AND password = PASSWORD('$pass') ");
+	if($rs['rows']){
+		$_SESSION['user'] = $rs['rows'][0]['login'];
+		$_SESSION['id']   = $rs['rows'][0]['id'];
+		$_SESSION['priv'] = $rs['rows'][0]['privilegies'];	} 
+}
+
+if (isset($_SESSION['user'])){
+	
+	$tpl->assign(array('LOGIN'=>1));		
+	
+	if ($action == "logout"){
+		session_destroy();
+		$tpl->assign(array('LOGIN'=>''));		
+	}
+		
+		
+	if($param['update'] == 'Aktualizovat' && isset($param['ipaddress']) && isset($param['cdkey']) && isset($param['email'])) {	
+		
+		$ipaddress = addslashes($param['ipaddress']);
+		$cdkey = addslashes($param['cdkey']);
+		$email = addslashes($param['email']);
+		$noipcheck = $param['noipcheck']=="yes"?1:0;
+		
+      function getCDkey($input,$s){
+      	if((strlen($input))!=24) {
+      		return;
+      	}
+      	for($i=0;$i<8;$i++){
+				$output=$output.substr($input,3*$i+$s,1);
+     	
+      	}
+      	return $output;
+      }
+ 		     	
+		$cdkey1 = getCDkey($cdkey,0);
+		$cdkey2 = getCDkey($cdkey,1);
+		$cdkey3 = getCDkey($cdkey,2);		
+
+		if($cdkey1 && $cdkey2 && $cdkey3) {
+	
+			$rs = $db->qy("SELECT login FROM pwplayers WHERE
+										((cdkey = '".$cdkey1."' OR cdkey2 = '".$cdkey2."' OR cdkey3 = '".$cdkey3."')
+										AND id!=".$_SESSION['id']."
+										AND password!=(SELECT password FROM pwplayers WHERE id=".$_SESSION['id'].")
+										AND ip!=(SELECT ip FROM pwplayers WHERE id=".$_SESSION['id'].")"					
+										);
+			
+			if(!$rs['rows'][0]['login']) {							
+				$db->qy("UPDATE pwplayers SET ip='".$ipaddress."', cdkey='".$cdkey1."', cdkey2='".$cdkey2."', cdkey3='".$cdkey3."', email='".$email."', noipcheck=".$noipcheck." WHERE id=".$_SESSION['id']." ");
+			}
+			else {
+				$tpl->assign(array('ERROR'=>"Vámi zadaný Thalie CD-key již používá uživatel s účtem: <strong>".$rs['rows'][0]['login']."</strong>.")); 									
+			}
+		}
+		else {
+			$tpl->assign(array('ERROR'=>"Byl zadán nesprávný Thalie CD-KEY."));
+		}
+		
+	}
+	//konec update
+	$cdkey = "";
+	$rs = $db->qy("SELECT ip, login, cdkey, cdkey2, cdkey3, email, noipcheck FROM pwplayers WHERE id = ".$_SESSION['id']." ");
+
+	$cdkey1     = $rs['rows'][0]['cdkey'];
+	$cdkey2     = $rs['rows'][0]['cdkey2'];
+	$cdkey3     = $rs['rows'][0]['cdkey3'];
+
+	if($cdkey1 && $cdkey2 && $cdkey3){
+		for($i=0;$i<8;$i++){
+			$cdkey = $cdkey.substr($cdkey1,$i,1);
+			$cdkey = $cdkey.substr($cdkey2,$i,1);
+			$cdkey = $cdkey.substr($cdkey3,$i,1);			
+		}
+		
+	}
+	
+	$tpl->assign(array("IPADRESS"=>$rs['rows'][0]['ip'],
+							"USER"=>$rs['rows'][0]['login'],
+							"CDKEY"=>$cdkey,
+							"EMAIL"=>$rs['rows'][0]['email'],
+							"CHECKED"=>($rs['rows'][0]['noipcheck'])?' checked="checked"':'',
+							"USER_ID"=>$_SESSION['id'],
+							"VAR_SYMBOL"=>$_SESSION['id']+1000000000
+							));
+							}	
+
+?>

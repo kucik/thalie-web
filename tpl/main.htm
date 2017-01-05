@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cz" lang="cz">
+<head>
+  <title>{TITLE} | Thalie - fantasy online RP svět hry Neverwinter Nights (NWN)</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta name="verify-v1" content="LihvmLYnMtHTb/xrZ1mMYDV97lQ5K6Qp1Erdb+kJSDo=" />
+  <meta name="description" content="Thalie je persistentní fantasy online svět hry Neverwinter Nights (NWN), zaměřen především na RP hru." />
+  <meta name="keywords" content="Thalie, Neverwinter Nights, nwn, fantasy, online, RP, role playing, svět, hry, Dungeons &amp; Dragons, rpg, multiplayer" />
+  <meta name="robots" content="index,follow" />
+  <meta http-equiv="content-language" content="cz" />
+
+  <link rel="stylesheet" type="text/css" href="{HOME_URL}css/main.css" />
+  <link rel="stylesheet" type="text/css" href="{HOME_URL}css/tinymce.css" />
+
+          <!-- jsProgressBarHandler prerequisites : prototype.js -->
+        <script type="text/javascript" src="jsprogressbar/js/prototype/prototype.js"></script>
+
+        <!-- jsProgressBarHandler core -->
+        <script type="text/javascript" src="jsprogressbar/js/bramus/jsProgressBarHandler.js"></script>
+        <!-- jquery -->
+        <script src="js/jquery.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+	   
+	      jQuery(document).ready(function() {   		
+		jQuery('#player_list .name').hover(         
+		  function() {                                                
+		    jQuery(this).addClass('hover');   
+		  }, function() {                
+		    jQuery(this).removeClass('hover');  
+		  }                                 
+		);
+
+		jQuery('#player_list .name .portrait').hover(         
+		  function() {                                                
+		    jQuery(this).addClass('hover');   
+		  }, function() {                
+		    jQuery(this).removeClass('hover');  
+		  }                                 
+		);		
+		                                                                        
+	      });  
+	</script>
+
+        <!-- jquery end -->
+
+</head>
+ <body>
+	
+ <div id="page">
+
+
+	<div id="banner">
+		<a href="{HOME_URL}" class="logo">
+			<img src="{HOME_URL}images/logo.jpg" alt="Thalie" />			
+		</a>		
+	</div> 
+	
+
+	<div id="main">
+
+		<div id="content_bg">
+
+			<div class="navigation">
+				<!-- BEGIN: navigation -->
+					<a href="{HOME_URL}{NAV_ITEM_URL}-{NAV_ITEM_ID}.htm">{NAV_ITEM_NAME}</a><strong> ></strong>
+				<!-- END: navigation -->				
+				<span class="active">{NAV_ACTUAL_NAME}</span>			
+			</div>
+			
+			<div id="content">
+				 {CONTENT} 
+			</div>
+		</div>
+
+		<div id="left">
+			<div class="menu_bg">
+				<div class="menu">
+  					<!-- BEGIN: category -->  
+    				<a href="{HOME_URL}{CATEGORY_URL}" class="{CLASS} {C_CATEGORY_ACTIVE}">{CATEGORY_NAME}</a>
+  					<!-- END: category -->
+  					<!-- Zde zacina staticke manu -->
+					<a href="http://thalie.pilsfree.cz/forum/index.php">Fórum</a>				
+					<!--<a href="{HOME_URL}chat.htm">Chat</a>-->
+					<a href="{HOME_URL}login.htm">Přihlášení</a>
+					<a href="{HOME_URL}registrace.htm">Registrace</a>
+
+<!--		<a href="{HOME_URL}index.php?page=login">Přihlášení</a>
+ 		<a href="{HOME_URL}index.php?page=registrace">Registrace</a>-->
+	
+  					<!-- Zde konci staticke menu -->  				
+				</div>
+				<div class="divider"></div>
+				<div class="player_list">
+				Adresa: <strong>thalie.pilsfree.cz</strong><br />
+				Poslední restart: {RESTART}<br /><br />
+				<!-- IFNDEF: LOADED -->
+				Načítání modulu: <strong>{MODULE_LOADING}%</strong>
+                                <span id="progressbar1" width=100><img src="gif/nic.gif" width=100 heigth=1></span>
+                     <script type="text/javascript">
+                                document.observe('dom:loaded', function() {
+                                                 manualPB2 = new JS_BRAMUS.jsProgressBar(
+                                                                $('progressbar1'),
+                                                                {MODULE_LOADING},
+                                                                {
+                                                                        //width           : 154,
+                                                                        showText        : false,
+                                                                        height          : 11,
+                                                                        barImage        : Array(
+                                                                                'jsprogressbar/images/bramus/percentImage_back4.png',
+                                                                                'jsprogressbar/images/bramus/percentImage_back3.png',
+                                                                                'jsprogressbar/images/bramus/percentImage_back2.png',
+                                                                                'jsprogressbar/images/bramus/percentImage_back1.png'
+                                                                        ),
+
+                                                                }
+                                                        );
+
+                                }, false);
+                        </script>
+				<!-- ELSE -->
+				 	<strong>Právě hrají ({PLAYER_COUNT}):</strong><br />
+					<div id="player_list">
+					<!-- BEGIN: player_list -->
+						<span class="name">{PLAYER_NAME}<span class="portrait" style="background-image: url('images/portraits/{PLAYER_PORTRAIT}m.jpg')"><a href="data/portraitspacks/{PLAYER_PORTRAIT}_pack.zip" class="save">uložit</a></span></span>
+					<!-- END: player_list -->
+					</div> <!-- player_list -->
+				<!-- ENDIF -->
+				<br />
+				<strong>Thalijský datum:</strong><p>
+				{THALIE_DAY}.{THALIE_MONTH}.{THALIE_YEAR}</p>
+				<strong>Verze modulu:</strong><p>
+				{MODULE_VERSION}</p>
+		
+				<!--<strong>Právě chatují ({IRC_COUNT}):</strong><br />-->
+					<!-- BEGIN: irc_list -->
+					<!--	{IRC_USER}<br />-->
+					<!-- END: irc_list -->				 	
+				</div>
+				<div class="divider"></div>			
+				<div class="links">
+					<a href="http://www.aragorn.cz/" onclick="window.open(this.href); return false;"><img src="images/img_aragorn.gif" alt="Aragorn" /></a>
+					<a href="http://www.arkhalia.cz/" onclick="window.open(this.href); return false;"><img src="images/img_arkhalia.gif" alt="Arkhalia" /></a>
+					<a href="http://demona.neverwinter.cz/" onclick="window.open(this.href); return false;"><img src="images/img_demona.gif" alt="Demona" /></a>
+					<a href="http://www.dragonhammer.neverwinter.cz/" onclick="window.open(this.href); return false;"><img src="images/img_dragon-hammer.gif" alt="Dragon Hammer" /></a>
+					<a href="https://equilibrie.onyxlab.cz/" onclick="window.open(this.href); return false;"><img src="images/img_equilibrie.gif" alt="Equilibrie" /></a>
+					<a href="http://kandelabrie.dyndns.org/" onclick="window.open(this.href); return false;"><img src="images/img_kandelabrie.gif" alt="Kandelabrie" /></a>
+					<a href="http://www.mintaka.info/" onclick="window.open(this.href); return false;"><img src="images/img_mintaka.gif" alt="Mintaka" /></a>
+					<a href="http://www.neverwinter.cz/" onclick="window.open(this.href); return false;"><img src="images/img_neverwinter.gif" alt="Neverwinter.cz" /></a>	
+				</div>
+			<div class="menu_bg2"></div>
+			</div>
+			
+			<a href="http://mikesgallery.mysteria.cz" class="erb" onclick="window.open(this.href); return false;">
+				<img src="{HOME_URL}images/erb.gif" alt="Mikes gallery" />			
+			</a>
+					
+		</div>	
+
+
+		<div class="cleaner"></div>
+	</div>
+	<div class="main_bg_bott"></div>
+	<div id="footer">
+		<div class="copyright">
+			Ilustrace a grafika by <a href="http://mikesgallery.mysteria.cz/" onclick="window.open(this.href); return false;">mikE</a>, použité obrázky jsou majetkem <a href="http://wizards.com/" onclick="window.open(this.href); return false;">Wizards.com</a><br />
+			Copyright © 2008 <a href="http://thalie.pilsfree.cz">Thalie</a>
+			<a href="http://www.toplist.cz/stat/438858">.<script language="JavaScript" type="text/javascript"> 
+			<!--
+			document.write ('<img src="http://toplist.cz/dot.asp?id=438858&amp;http='+escape(document.referrer)+'&amp;t='+escape(document.title)+'" width="1" height="1" border=0 alt="TOPlist" />'); 
+			//--></script></a><noscript><img src="http://toplist.cz/dot.asp?id=438858"	alt="TOPlist" /></noscript>
+
+		</div>
+		<div class="menu">
+			<a href="{HOME_URL}kdoze-jsme-81.htm">Kontakt</a> |
+			<a href="{HOME_URL}sitemap.xml">Mapa stránek</a>
+		</div>
+		<div class="cleaner"></div>
+	</div> 
+ </div>
+
+ 
+ </body>
+</html>
+

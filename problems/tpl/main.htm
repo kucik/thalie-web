@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs">
+<head>
+  <!-- IFDEF: ID -->
+  <title>{PROBLEM_NAME} | Thalie - Správa chyb</title>
+  <!-- ELSE -->
+  <title>Thalie - Správa chyb</title>
+  <!-- ENDIF -->
+  <!-- IFDEF: USER -->
+    <!-- IFDEF: LOGINPAGE --> 
+      <meta http-equiv="Refresh" content="2; url=index.php"> 
+    <!-- ENDIF -->
+  <!-- ENDIF -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta name="author" content="http://thalie.pilsfree.cz" />
+  <meta name="description" content="Správa chyb Thalie" />
+  <meta name="keywords" content="sprava chyb, správa chyb, thalie, nwn, neverwinter, nights, rpg, fantasy, online" />
+  <meta name="robots" content="index,follow" />
+  <meta http-equiv="content-language" content="cs" />
+
+  <link rel="stylesheet" type="text/css" href="css/main.css" />
+
+</head>
+  <body>
+
+  <h1>Thalie | Správa chyb{SHOW}</h1>
+  
+  <p class="intro">Správa chyb Thalie slouží hráčům, DM a WB jako přehled toho, co je potřeba opravit a v jakém stavu se chyba nachází.
+  Ti co mají oprávnění se mohou přihlásit a přidávat či upravovat detaily chyb.</p>
+  
+  <div class="links">
+    <a href="index.php">HOME</a>|
+    <a href="index.php?page=klevety">Klevety</a>|
+    <a href="index.php?page=home">Chyby</a>|
+    <a href="http://thalie.pilsfree.cz">thalie.pilsfree.cz</a>|
+    <a href="http://thalie.pilsfree.cz/forum/">fórum</a>|
+    <a href="index.php?page=edit">přidat chybu</a>|
+    <!-- IFDEF: LOGS -->
+    <a href="index.php?page=logs">logy</a>|
+    <!-- ENDIF -->
+    <!-- IFDEF: USER -->
+    <a href="index.php?page=home&amp;action=logout">odhlásit [<strong> {USER} </strong>]</a>
+    <!-- ELSE -->
+    <a href="index.php?page=login">přihlásit se</a>
+    <!-- ENDIF -->
+  </div>
+  <div>
+  {CONTENT}
+  </div>
+  <div class="copyright">
+    by igor | <a href="http://thalie.pilsfree.cz">Thalie</a><br /><br />
+    
+ <a href="http://www.toplist.cz/stat/705685"><script language="JavaScript" type="text/javascript">
+<!--
+document.write ('<img src="http://toplist.cz/count.asp?id=705685&amp;logo=mc&amp;http='+escape(document.referrer)+'&amp;t='+escape(document.title)+'" width="88" height="60" border=0 alt="TOPlist" />'); 
+//--></script></a><noscript><img src="http://toplist.cz/count.asp?id=705685&amp;logo=mc" border="0"
+alt="TOPlist" width="88" height="60" /></noscript>
+  
+  </div>
+
+  </body>
+</html>
+

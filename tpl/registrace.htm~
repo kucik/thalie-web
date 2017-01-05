@@ -1,0 +1,37 @@
+<h1>Registrace</h1> 
+
+{ERROR}
+
+<form action="{HOME_URL}registrace.htm" method="post">
+	<input type="hidden" name="action" value="send" />
+	<table>
+		<tr>
+			<td>Login:</td>
+			<td><input name="param[user]" type="text" value="{USER}" /></td>
+		</tr>
+		<tr>
+			<td>Heslo:* </td>
+			<td><input name="param[pass]" type="password" /></td>
+		</tr>
+		<tr>
+			<td>Heslo znovu: </td>
+			<td><input name="param[pass2]" type="password" /></td>
+		</tr>
+		<tr>
+			<td>E-mail:</td>
+			<td><input name="param[email]" type="text" value="{EMAIL}" /></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<ul>				
+					<li>*Heslo musí mít nejméně 5 znaků</li>
+					<li>Login musí být stejný jako ve hře.</li>
+					<li>Pozor! Záleží na velkých a malých písmenech.</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="submit" value="Registrovat" /></td>
+		</tr>
+	</table>
+</form>

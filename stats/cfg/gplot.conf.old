@@ -1,0 +1,64 @@
+# nejprve obecne nastaveni
+set terminal gif size 640,480              # nastav√≠me vystup do gifu a rozmery
+set output "../img/$logfile.gif"         # kam ulozit gif
+set size 1,1                               # nastavime kreslici plchu
+set origin 0,0                             # nastavime levy dolni roh plochy
+set multiplot                              # vice grafiky na jednom obrazku
+set grid                                   # zobrazit mrizku
+set xrange [0:$NUM_RECORDS]                # nastaveni rozsahu osy x
+set nokey                                  # vypneme legendu
+
+# 1. graf 
+set size 1,0.25                            # nastaveni rozmeru grafu
+set origin 0,0                             
+set yrange [0:60]                         # rozsah osy y
+#set autoscale y
+set xdata time; set timefmt "%Y/%m/%d %H:%M:%S"
+set xrange ["$START_TIME":"$STOP_TIME"]
+set format x "%H:%M"
+set key left 
+set label "Vytizeni procesoru [$CPU_USAGE_ACT%]" at screen 0.5,0.2 center       # popis grafu
+set timefmt "%Y/%m/%d %H:%M:%S"
+plot "$logfile" every 10 using 1:($15+$16) with lines title "Celkove vytizeni", \
+     "$logfile" every 10 using 1:16 with lines title "Vytizeni jadrem"
+
+# 2. graf - Pamet (
+set size 1,0.25
+set origin 0,0.25
+set autoscale y
+set xdata time; set timefmt "%Y/%m/%d %H:%M:%S"
+set xrange ["$START_TIME":"$STOP_TIME"]
+set format x "%H:%M"
+set key left bottom 
+set label "Vyuziti pameti [$MEM_USAGE MB]" at screen 0.5,0.45 center
+plot "$logfile" every 10 using 1:(4063200/1024) with lines title "Celkova pamet",\
+     "$logfile" every 10 using 1:((4063200 - $6)/1024) with lines title "Vyuzita pamet"
+
+# 3. graf - prepnuti≠ kontextu (sloupec 13 vypisu vmstat)
+#ycs=($MAX_IO-$MIN_IO)/5
+set size 1,0.25
+set origin 0,0.5
+#set autoscale y
+set yrange [0:1200]                         # rozsah osy y
+#set ytics ycs
+set xdata time; set timefmt "%Y/%m/%d %H:%M:%S"
+set xrange ["$START_TIME":"$STOP_TIME"]
+set format x "%H:%M"
+set label 1 "Prepnuti kontextu [cws/s]" at screen 0.5,0.7 center
+set nokey
+plot "$logfile" every 10 using 1:14 with lines
+
+# 4. graf - i/o statistiky (soucet sloupcu  11 a 12 vypisu vmstat)
+#ycs=($MAX_IO-$MIN_IO)/5
+set size 1,0.25
+set origin 0,0.75
+#set autoscale y
+set yrange [0:2000]                         # rozsah osy y
+#set ytics ycs
+set xdata time; set timefmt "%Y/%m/%d %H:%M:%S"
+set xrange ["$START_TIME":"$STOP_TIME"]
+set format x "%H:%M"
+set label "I/O aktivita [block/s]" at screen 0.5,0.95 center
+plot "$logfile" every 10 using 1:($12+ $13) with lines
+
+

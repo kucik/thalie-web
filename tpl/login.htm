@@ -1,0 +1,149 @@
+<!-- IFDEF: LOGIN -->
+
+<h1>Přihlášen > {USER}[{USER_ID}]</h1>
+<form action="{HOME_URL}login.htm" method="post">
+	<input type="hidden" name="action" value="logout" />
+	<input type="submit" value="Odhlásit se" />
+</form>
+
+<!-- IFDEF: ERROR -->
+<div class="error">
+	{ERROR}
+</div>
+<!-- ENDIF -->
+
+<form action="{HOME_URL}login.htm" method="post">
+	 <table class="form" align="center">
+     <tr>
+       <td width="100">IP adresa (IPv4):</td>
+       <td><input name="param[ipaddress]" type="text" value="{IPADRESS}">
+     </tr>
+     <tr>
+     		<td colspan="2">
+     			<input name="param[noipcheck]" type="checkbox" value="yes" {CHECKED} />
+     			Nechci ve hre kontrolovat moji IP adresu
+     		</td>
+     </tr>
+     <tr>
+       <td>Thalie CD-KEY: </td>
+       <td><input name="param[cdkey]" type="text" value="{CDKEY}" />
+           <input type="hidden" name="prev_key" value="{CDKEY}" /></td>
+     </tr>
+     <tr>
+       <td>Email: </td>
+       <td><input name="param[email]" type="text" value="{EMAIL}" /></td>
+     </tr>
+     <tr>
+     	 <td>Variabilni symbol: </td>
+     	 <td>{VAR_SYMBOL}</td>
+    </tr>
+    <tr>
+    	<td colspan="2" class="hint" align="center">
+	   		<a href="{HOME_URL}jak-se-pripojit-34.htm">Co je to Thalie CD-KEY?</a><br />
+	   		<a href="{HOME_URL}jak-se-pripojit-34.htm">Co je to IP adresa?</a>
+	 	</td>
+    </tr>
+    <tr>
+    	<td colspan="2" align="center">
+	      <input type="submit" name="param[update]" value="Aktualizovat" />
+		</td>
+     </tr>
+  </table></form>
+
+<h2>Změna hesla</h2>
+<form action="{HOME_URL}login.htm" method="post">
+	<input type="hidden" name="param[change_pwd]" value="1" />
+	<table class="form" align="center">
+		<tr>
+			<td>
+				Nové heslo: 
+			</td>
+			<td><input type="password" name="param[new_pwd]" /></td>		
+		</tr>	
+		<tr>
+			<td>Ověření hesla:</td>
+			<td><input type="password" name="param[new_pwd2]" /></td>		
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><input type="submit" value="Změnit heslo" /></td>		
+		</tr>
+	</table>
+</form>
+
+<h2>Správa postav</h2>
+         <div id="chars_list">
+         <table width=100%>
+         <tr>
+           <th> </th>
+           <th>Jméno</th>
+           <th>Naposledy přihlášeno</th>
+           <th></th>
+         </tr>
+         <!-- BEGIN: chars_list -->
+           <tr><td colspan=6><hr></td></tr>
+           <tr>
+             <td>
+                <div class=portraitcrop><img src="images/portraits/{CHARS_PORTRAIT}m.jpg"/ ></div></td>
+             <td> <div class="name">{CHARS_NAME}</div></td>
+             <td> {CHARS_LAST}</td>
+             <td>{CHARS_DELETE}</td>
+           </tr>
+         <!-- END: chars_list -->
+        </table>
+        </div> <!-- chars_list -->
+
+<!-- IFDEF: RESTART_SERVERU -->
+<br />
+<h2>Administrace serveru</h2>
+<form action="{HOME_URL}login.htm" method="post">
+<p class="center">
+	<input type="hidden" name="param[restart]" value="restart" />
+	<input type="submit" value="Restartovat server" />
+</p>
+</form>
+<!-- ENDIF -->
+<!-- IFDEF: LOKACE -->
+<form action="{HOME_URL}locations.htm" method="get">
+<p class="center">
+	<input type="submit" value="Spravovat lokace" />
+</p>
+</form>
+
+<!-- ENDIF -->
+
+<!-- IFDEF: RESET_PASSWORD -->
+<form action="{HOME_URL}login.htm" method="post">
+	Zadejte název uživatele: 
+	<input type="hidden" name="param[reset_pwd]" value="1" />
+	<input type="text" name="param[reset_pwd_user]" />
+	<input type="submit" value="Resetovat heslo" />
+</form>
+<!-- ENDIF -->
+
+<!-- ELSE -->
+<h1>Přihlášení</h1>
+
+<!-- IFDEF: ERROR -->
+<div class="error">
+	{ERROR}
+</div>
+<!-- ENDIF -->
+
+<form action="{HOME_URL}login.htm" method="post">
+	<input type="hidden" name="action" value="login" />
+	<table class="form" align="center">
+  		<tr>
+    		<td>Login:</td>
+    		<td><input name="param[login]" type="text" /></td>
+  		</tr>
+  		<tr>
+    		<td>Heslo:</td>
+    		<td><input name="param[pass]" type="password" /> </td>
+  		</tr>
+ 		<tr>
+    		<td colspan="2" align="center"><br /><input type="submit" value="Přihlásit" /></td>
+  		</tr>
+	</table>
+</form>
+<!-- ENDIF -->

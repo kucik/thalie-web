@@ -1,0 +1,65 @@
+<!-- IFNDEF: ID -->
+<h2>Přidat chybu</h2>
+<!-- ELSE -->
+<h2>Upravit chybu</h2>  
+<!-- ENDIF -->
+<form action="index.php?page=edit" method="post">
+<p>
+  <input type="hidden" name="action" value="update" />
+  <input type="hidden" name="id" value="{PROBLEM_ID}" /> 
+</p>
+
+<table class="edit">
+  <tr>
+    <td>Název chyby:</td>
+    <td><input type="text" name="param[name]" value="{PROBLEM_NAME}" /></td> 
+  </tr>
+  <tr>
+    <td>Důležité:</td>
+    <td><input class="check" type="checkbox" name="param[flag]" value="1" {PROBLEM_CHECKED} /></td>
+  </tr>
+  <tr>       
+    <td>Stav:</td>
+    <td>
+      <select name="param[status]">
+        <option value="1">neopraveno</option>
+        <option value="2">testuje se</option>
+        <option value="3">opraveno</option>
+      </select>
+    </td>
+  </tr>
+  <tr>               
+    <td colspan="2">
+      Popis chyby:<br /><br />
+      <textarea name="param[descript]">{PROBLEM_DESCRIPT}</textarea>
+    </td>   
+  </tr>
+  <tr>               
+    <td colspan="2">
+      Způsob opravy:<br /><br />
+      <textarea name="param[solution]">{PROBLEM_SOLUTION}</textarea>
+    </td>   
+  </tr>         
+  <tr>
+    <td></td>
+    <td><input class="submit" type="submit" value="Odeslat" /></td>
+  </tr>
+</table>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

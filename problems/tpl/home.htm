@@ -1,0 +1,111 @@
+ <!-- IFDEF: ID -->     
+                  
+
+  <!-- BEGIN: problem_detail -->
+  <h2 class=" title n{PROBLEM_ICON}"> {PROBLEM_NAME}</h2>
+  
+  <table>
+    <tr>
+      <td>Datum: </td>
+      <td>{PROBLEM_DATE}</td>
+   </tr>
+    <tr>
+      <td>Vložil: </td>
+      <td class="green">{PROBLEM_AUTHOR}</td>
+   </tr>
+    <tr>
+      <td>Opraví: </td>
+      <td class="green">{PROBLEM_REPAIRER}</td>
+   </tr>
+    <tr>
+      <td>Stav: </td>
+      <td class="{PROBLEM_STYLE}">{PROBLEM_STATUS}</td>
+   </tr>
+  </table>
+
+
+  <h2>Popis chyby</h2>
+  <p>{PROBLEM_DESCRIPT_BR}</p>
+  
+  <!-- IFDEF: PROBLEM_SOLUTION_BR -->
+  <h2>Způsob opravy</h2>
+  <p>{PROBLEM_SOLUTION_BR}</p>
+  <!-- ENDIF -->
+
+  <!-- END: problem_detail -->
+
+
+  
+ <!-- ELSE -->
+ 
+  <script type="text/javascript" src="js/wz_tooltip.js"></script>
+ 
+ <p class="options">
+ <!-- IFDEF: SHOW -->
+ [ <a href="?show=">zobrazit všechny chyby</a> ]
+ <!-- ELSE -->
+ [ <a href="?show=no-repaired">skrýt opravené chyby</a> ]
+ <!--ENDIF -->
+ [ pro detail klikni na název chyby ]</p>   
+  <table class="main">
+    <tr>
+      <th class="flag"></th>
+      <th><a href="?order=name">Název chyby</a></th>
+      <th class="short"><a href="?order=status">Stav</a></th>
+      <th class="short"><a href="?order=date">Datum</a></th>
+      <th class="short"><a href="?order=repairer">Opraví</a></th>
+      <th class="short"><a href="?order=author">Přidal</a></th>
+      <!-- IFDEF: USER -->
+      <th class="short2"></th>
+      <!-- ENDIF -->
+    </tr>
+    
+    <!-- BEGIN: problems_list -->
+
+    <tr onmouseover="this.className='tr_hover'" onmouseout="this.className=''">
+      <td class="flag">
+      <!-- IFDEF: PROBLEM_FLAG -->
+        <div class="flag1"></div>
+      <!-- ELSE -->
+        <div class="icon n{PROBLEM_ICON}"></div>
+      <!-- ENDIF -->
+      </td>
+      <td><a href="index.php?id={PROBLEM_ID}" onmouseover="Tip('{PROBLEM_DESCRIPT}', WIDTH, 250)">{PROBLEM_NAME}</a></td>
+      <td><span class="{PROBLEM_STYLE}">{PROBLEM_STATUS}</span></td>
+      <td>{PROBLEM_DATE}</td>
+      <td>
+      <!-- IFNDEF: PROBLEM_REPAIRER -->
+      <!-- IFDEF: USER -->
+        <a href="index.php?page=home&amp;action=repair&amp;pid={PROBLEM_ID}">[opravit]</a>
+      <!-- ENDIF -->
+      <!-- ELSE -->
+      {PROBLEM_REPAIRER}      
+      <!-- ENDIF -->
+      </td>
+      <td>{PROBLEM_AUTHOR}</td>
+      <!-- IFDEF: USER -->
+      <td>
+        <a href="index.php?page=edit&amp;id={PROBLEM_ID}">[edit]</a>
+        <a href="index.php?action=delete&amp;pid={PROBLEM_ID}">[smazat]</a>
+      </td>
+      <!-- ENDIF -->
+    </tr>
+    
+    <!-- END: problems_list -->
+  
+  </table>
+  
+  <div class="line"></div>
+  
+  <h2>Statistika opravářů</h2>
+  
+  <table>
+    <!-- BEGIN: user_graph -->
+    <tr>
+      <td>{USER_GRAPH_REPAIRER} ({USER_COUNT})</td>
+      <td><div class="graph_bar" style="width: {USER_WIDTH}px;"></div></td>
+    </tr>
+    <!-- END: user_graph -->
+    
+  </table>
+ <!-- ENDIF -->

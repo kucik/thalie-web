@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cz" lang="cz">
+<head>
+  <title>Thalie | Admin 1.0</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta name="author" content="Jakub Valenta"/>
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="robots" content="index,follow" />
+  <meta http-equiv="content-language" content="cz" />
+
+  <link rel="stylesheet" type="text/css" href="css/main.css" />
+  
+</head>
+<body>
+  
+  <div id="page">
+    
+    <h1>Thalie | Admin 1.0</h1>    
+    <p>Administrační rozhraní Thalie.</p>
+    
+    <div id="menu">
+      <a href="http://igor.pilsfree.cz/Thalie/">Zpět na web</a>
+      <a href="index.php?page=category">Kategorie</a>
+      <a href="index.php?page=article">Články</a>
+    </div>
+    
+    <div id="main">
+    	<div class="col">
+    	
+    	</div>
+    {CONTENT}
+    </div>
+    
+  </div>
+  
+</body>
+</html>

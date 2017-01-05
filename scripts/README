@@ -1,0 +1,21 @@
+///////////////////////////////////////
+///Scripty pro udržování portrétů postav
+///autor: kucik
+///Vytvořeno 16. 05. 2010
+////////////////////////////////////////
+
+Návod k použití:
+
+Zrychleně:
+Spust ./getportrait.sh a jako parametry mu dej linky na portréty.
+Pokud se mají portréty přepsat, přidej parametr -o.
+Příklad:
+  ./getportrait.sh -o http://thalie.pilsfree.cz/forum/download/file.php?id=2859 http://thalie.pilsfree.cz/forum/download/file.php?id=2845
+ 
+
+Dlouhá verze:
+1. Stáhni balík portrétů ve formátu zip, nebo rar do adresáře data
+2. Balík musí mít příponu .zip nebo .rar. Pokud nemá rozbal ho.
+3. Spust ./addportraits.sh. Rozbalí se všechny .rar a .zip v data, portréty se zkopírují do ~/images/portraits/
+4. Spust ./makepackages.sh. Vytvoří se .jpg náhledy a balíčky portrétů ke stažení.
+

@@ -1,0 +1,99 @@
+<div class="col">
+  
+  <h2>Výpis kategorií</h2>
+  
+  <a href="index.php?page=category">Kořenové položky</a>
+  <br /><br />
+ 
+  <table class="category">
+    <tr>
+      <th>Název</th>
+      <th>Váha</th>
+      <th>Upravit</th>
+      <th>Smazat</th>
+    </tr>
+  <!-- BEGIN: category_list -->
+    <tr>
+      <td><a href="index.php?page=category&amp;id={CATEGORY_ID}" class="{CLASS}{C_CATEGORY_ACTIVE}">{CATEGORY_NAME}</a></td>
+      <td>{CATEGORY_SORT}</td>
+      <td><a href="index.php?page=category&amp;action=edit&amp;id={CATEGORY_ID}" class="edit">[upravit]</a></td>
+      <td><a href="index.php?page=category&amp;action=delete&amp;id={CATEGORY_ID}" class="delete" onclick="return confirm('Opravdu odstranit?');">[smazat]</a></td>
+    </tr>
+  <!-- END: category_list -->
+  </table>
+
+</div>
+
+<div class="col">
+  
+  <h2>Vložení / editace kategorie</h2>
+  
+  Nadřazená položka: 
+  <!-- IFDEF: CATEGORY_PARRENT -->
+  <strong>{CATEGORY_PARRENT} </strong><a href="index.php?page=category">[nastavit jako kořen]</a>
+  <!-- ELSE -->
+  -- kořenová položka --
+  <!-- ENDIF -->
+  
+  <form method="post" action="index.php?page=category">
+  <input type="hidden" name="action" value="save" />
+  <input type="hidden" name="id" value="{ID}" />
+  <input type="hidden" name="param[edit_id]" value="{EDIT_ID}" />
+    
+    <table>
+      <tr>
+        <td>Název:</td>
+        <td><input type="text" name="param[name]" value="{CATEGORY_EDIT_NAME}" /></td>
+      </tr>
+      <tr>
+        <td>URL:</td>
+        <td><input type="text" name="param[url]" value="{CATEGORY_EDIT_URL}" /></td>
+      </tr>
+      <tr>
+        <td>Váha:</td>
+        <td><input type="text" name="param[sort]" value="{CATEGORY_EDIT_SORT}" /></td>
+      </tr>
+      <tr>
+        <td>Homepage:</td>
+        <td><input type="checkbox" name="param[homepg]" {CATEGORY_EDIT_HOMEPG} /></td>
+      </tr>      
+    </table>
+    
+    <input type="submit" value="Uložit" />
+  
+  </form>
+	
+	<br /><br />	
+	<!-- IFDEF: EDIT_ID -->	
+	<form method="post" action="index.php?page=category">
+		<input type="hidden" name="action" value="save_gallery" />
+		<input type="hidden" name="param[edit_id]" value="{EDIT_ID}" />
+		
+		<table>
+			<tr>
+				<td>Přiřadit galerii:</td>			
+			</tr>
+			<tr>
+				<td>
+					<select style="width: 180px" name="param[gallery]">
+						<option value=""></option>
+					<!-- BEGIN: gallery_list -->
+						<option value="{GALLERY_NAME}" {GALLERY_SELECTED}>{GALLERY_NAME}</option>
+					<!-- END: gallery_list -->
+					</select>				
+				</td>			
+			</tr>
+			<tr>
+				<td>
+					<input type="submit" value="Přiřadit" />			
+				</td>			
+			</tr>					
+		</table>		
+				
+	</form>  
+  	<!-- ENDIF -->
+
+</div>
+
+<div class="cleaner"></div>
+

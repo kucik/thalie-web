@@ -1,0 +1,34 @@
+<?php
+
+  require_once ("../cls/ft.cls.php");
+  require_once ("../cls/db.cls.php");
+  require_once ("inc/settings.inc.php");
+  require_once ("inc/parse_vars.inc.php");
+  
+  $db = new db(DB_HOST, DB_USER , DB_PWD , DB, "true"); //z db.cls.php
+	//$db->qy("set option character set utf8");
+  $tpl = new FastTemplate("tpl");
+  
+  $tpl->define(array("main"=>"main.htm"));
+  $tpl->assign(array("ID"=>$id);
+  switch($page) {
+    
+   case 'category':
+    	require_once("inc/category.inc.php");
+    break;
+    case 'article':
+    	require_once("inc/article.inc.php");
+	 break;
+	 
+  }  
+  
+  
+  if ($tpl->is_defined('content')) {
+      $tpl->parse('CONTENT', 'content');	
+  } 
+  else $tpl->assign(array('CONTENT'=>''));
+
+  $tpl->parse("MAIN","main");
+  $tpl->FastPrint("MAIN");        
+  
+?>

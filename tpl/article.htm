@@ -1,0 +1,17 @@
+<h1>{ARTICLE_NAME}</h1>				
+{ARTICLE_TEXT}
+
+
+<!-- IFDEF: PHOTO_DIR -->
+<script type="text/javascript" src="{HOME_URL}js/prototype.js"></script>
+<script type="text/javascript" src="{HOME_URL}js/scriptaculous.js?load=effects,builder"></script>
+<script type="text/javascript" src="{HOME_URL}js/lightbox.js"></script>
+<link rel="stylesheet" href="{HOME_URL}css/lightbox.css" type="text/css" media="screen" />
+<div class="photo_list">
+<!-- BEGIN: photo_list -->
+	<div class="decor-img">			
+		<a href="{HOME_URL}{PHOTO_DIR}/{PHOTO_FILE}" rel="lightbox[group]"><img src="{HOME_URL}{PHOTO_DIR}/tn_{PHOTO_FILE}" alt="{PHOTO_FILE}" /></a>
+	</div>
+<!-- END: photo_list -->
+</div>				
+<!-- ENDIF -->

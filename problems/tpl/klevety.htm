@@ -1,0 +1,96 @@
+ <!-- IFDEF: XXID -->     
+                  
+
+  <!-- BEGIN: klevety_detail -->
+  <h2 class=" title n{KLEVETY_ICON}"> {KLEVETY_NAME}</h2>
+  
+  <table>
+    <tr>
+      <td>Datum: </td>
+      <td>{KLEVETY_DATE}</td>
+   </tr>
+    <tr>
+      <td>Vložil: </td>
+      <td class="green">{KLEVETY_AUTHOR}</td>
+   </tr>
+    <tr>
+      <td>Opraví: </td>
+      <td class="green">{KLEVETY_REPAIRER}</td>
+   </tr>
+    <tr>
+      <td>Stav: </td>
+      <td class="{KLEVETY_STYLE}">{KLEVETY_STATUS}</td>
+   </tr>
+  </table>
+
+
+  <h2>Popis chyby</h2>
+  <p>{KLEVETY_DESCRIPT_BR}</p>
+  
+  <!-- IFDEF: KLEVETY_SOLUTION_BR -->
+  <h2>Způsob opravy</h2>
+  <p>{KLEVETY_SOLUTION_BR}</p>
+  <!-- ENDIF -->
+
+  <!-- END: klevety_detail -->
+
+
+  
+ <!-- ELSE -->
+ 
+  <script type="text/javascript" src="js/wz_tooltip.js"></script>
+ 
+ <p class="options">
+  <table class="main">
+    <tr>
+      <th class="flag"></th>
+      <th><a href="?page=klevety&order=lokace">Lokace</a></th>
+      <th><a href="?page=klevety&order=status">NPC</a></th>
+      <!-- IFDEF: USER -->
+      <th></th>
+      <!-- ENDIF -->
+    </tr>
+    
+    <!-- BEGIN: klevety_list -->
+    <form action="index.php?page=klevety" method="post">
+      <input type="hidden" name="action" value="{KLEVETY_ACT}" />
+      <input type="hidden" name="id" value="{KLEVETY_ID}" />
+      <input type="hidden" name="prev_id" value="{KLEVETY_PREV_ID}" />
+
+    <tr onmouseover="this.className='tr_hover'" onmouseout="this.className=''">
+      <td class="flag">
+        <div class="icon n{KLEVETY_ICON}"><img src="{KLEVETY_ICON}"></div>
+      </td>
+      <td>{KLEVETY_AREA_NAME} ({KLEVETY_AREA_TAG})</td>
+      <td><span class="{KLEVETY_STYLE}">{KLEVETY_NPC_NAME} ({KLEVETY_NPC_TAG})</span></td>
+      <td><span class="{KLEVETY_STYLE}"><textarea rows="2" cols="80" name="text">{KLEVETY_TEXT}</textarea>
+      </td>
+      <td>
+        <input class="submit" type="submit" value="{KLEVETY_BUTTON}" />
+      </td>
+      <td>
+        <!-- IFDEF NOT_NEW -->
+        <a href="index.php?page=klevety&action=delete&pid={KLEVETY_ID}"><img border=0 src="images/icon1.gif">[smazat]</a>
+        <!-- ENDIF -->
+      </td>
+      <!-- ENDIF -->
+    </tr>
+   </form> 
+    <!-- END: klevety_list -->
+  
+  </table>
+  
+  <div class="line"></div>
+  
+  <h2>Statistika opravářů</h2>
+  
+  <table>
+    <!-- BEGIN: user_graph -->
+    <tr>
+      <td>{USER_GRAPH_REPAIRER} ({USER_COUNT})</td>
+      <td><div class="graph_bar" style="width: {USER_WIDTH}px;"></div></td>
+    </tr>
+    <!-- END: user_graph -->
+    
+  </table>
+ <!-- ENDIF -->

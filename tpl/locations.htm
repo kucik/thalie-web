@@ -1,0 +1,90 @@
+<!-- IFDEF: LOGIN -->
+
+<h1>Přihlášen > {USER}[{USER_ID}]</h1>
+<form action="{HOME_URL}login.htm" method="post">
+	<input type="hidden" name="action" value="logout" />
+	<input type="submit" value="Odhlásit se" />
+</form>
+
+<!-- IFDEF: ERROR -->
+<div class="error">
+	{ERROR}
+</div>
+<!-- ENDIF -->
+
+<form action="{HOME_URL}locations.htm" method="post" enctype="multipart/form-data">
+	 <table class="form" align="center">
+     <tr>
+       <td><label for="file">ARE:</label>
+           <input type="file" name="are" id="are">
+       </td>
+     </tr>
+     <tr>
+        <td><label for="file">GIC:</label>
+           <input type="file" name="gic" id="gic">
+    </tr>
+     <tr>
+        <td><label for="file">GIT:</label>
+           <input type="file" name="git" id="git">
+    </tr>
+    <tr>
+    	<td colspan="2" align="center">
+	      <input type="submit" name="submit" value="Nahrát" />
+	<input type="hidden" name="action" value="upload_loc" />
+		</td>
+     </tr>
+  </table>
+</form>
+
+
+         <div id="location_list">
+         <table width=100%>
+         <tr>
+           <th>Tag lokace</th>
+           <th>Vlastník</th>
+           <th>Stav</th>
+           <th>Nahráno</th>
+           <th>Smazat</th>
+           <th>Stáhnout</th>
+         </tr>
+         <!-- BEGIN: location_list -->
+           <tr><td colspan=6><hr></td></tr>
+           <tr>
+             <td>
+             <div class="name">{LOCATION_NAME}</div>
+             <td> {LOCATION_OWNER}</td>
+             <td><img src="images/button/loc_stat{LOCATION_STATUS}.gif" width=20/ alt="{LOCATION_STATUS_TEXT}" ></td>
+             <td>{LOCATION_TIME}</td>
+             <td>{LOCATION_DELETE}</td>
+             <td><a href="download/dmareas/{LOCATION_NAME}.zip"><img src="images/zip_file.png" width=25></a></td>
+           </tr>
+         <!-- END: location_list -->
+        </table>
+        </div> <!-- location_list -->
+
+<!-- ELSE -->
+<h1>Přihlášení</h1>
+
+<!-- IFDEF: ERROR -->
+<div class="error">
+	{ERROR}
+</div>
+<!-- ENDIF -->
+
+<form action="{HOME_URL}login.htm" method="post">
+	<input type="hidden" name="action" value="login" />
+	<table class="form" align="center">
+  		<tr>
+    		<td>Login:</td>
+    		<td><input name="param[login]" type="text" /></td>
+  		</tr>
+  		<tr>
+    		<td>Heslo:</td>
+    		<td><input name="param[pass]" type="password" /> </td>
+  		</tr>
+ 		<tr>
+    		<td colspan="2" align="center"><br /><input type="submit" value="Přihlásit" /></td>
+  		</tr>
+	</table>
+</form>
+<!-- ENDIF -->

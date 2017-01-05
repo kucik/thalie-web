@@ -1,0 +1,3 @@
+<?php
+    $tpl->define('content','chat.htm');
+?>

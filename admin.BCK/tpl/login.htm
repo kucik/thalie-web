@@ -1,0 +1,32 @@
+<h2>Přihlášení</h2>
+
+<!-- IFDEF: USER -->
+<center>Uživatel <strong>{USER}</strong> byl přihlášen.</center>
+<!-- ELSE -->
+<form method="post" action="index.php?page=login">
+
+<p>
+  <input type="hidden" name="action" value="login" />
+</p>
+  
+  <table class="login">
+    <tr>
+      <td colspan="2" class="dgreen">Pro přihlášení použijte stejné údaje jako pro přihlášení na fórum. Vstup pouze pro skupinu Správa webu<br /><br /></td>
+    </tr>
+    <tr>
+      <td>Jméno:</td>
+      <td><input type="text" name="param[user]" /></td>
+    </tr>
+    <tr>
+      <td>Heslo:</td>
+      <td><input type="password" name="param[pwd]" /></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <input type="submit" value="Přihlásit se" />
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- ENDIF -->

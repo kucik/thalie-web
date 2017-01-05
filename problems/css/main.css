@@ -1,0 +1,81 @@
+/* CSS Document */
+body {
+  margin: 110px;
+  color: #dddddd;
+  font-size: 11px;
+  font-family: Arial;
+  background: url('../images/decor.jpg') right top #000000 no-repeat;
+}
+
+p {padding: 0px; margin: 0px 0px 20px 0px;}
+p.intro {font-size: 12px; width: 500px; font-style: italic;}
+p.options a {color: #2e9e3c; text-decoration: none;}
+p.options a:hover {color: #dddddd}
+
+.links {margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #45c64e;}
+.links a {color: #2e9e3c; text-decoration: none; margin: 0px 6px 0px 5px}
+.links a:hover {color: #dddddd;}
+
+table {font-size: 11px;}
+table.main {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  margin-bottom: 20px;
+}
+table.main .tr_hover {background: #2c2c2c;}
+table.main th {
+  color: #cccccc;
+  height: 26px;
+  background: url(../images/th.gif) repeat-x;
+}
+table.main th, table.main td {border: 1px solid #3e3e3e;}
+table.main td {padding: 5px 10px 5px 20px;}
+table.main td.flag {padding: 0px 0px 0px 3px;}
+table.main th.short {width: 95px;}
+table.main th.short2 {width: 110px;}
+table.main th.flag {width: 26px;}
+
+table a {color: #dddddd; text-decoration: none;}
+table a:hover {text-decoration: underline;}
+
+table.login {
+  margin-left: auto;
+  margin-right: auto;
+  width: 220px;
+  text-align: justify;
+}
+
+table.edit input, table.edit select {
+  width: 200px; margin-left: 10px; font-size: 11px;
+}
+table.edit .check {width: auto;}
+table.edit textarea {width: 290px; height: 100px; font-size: 11px;}
+table.edit .submit {width: 75px; background: #2e9e3c; border: 0px;}
+
+.red {color: #cb1313;}
+.green {color: #38d447;}
+.orange {color: #ffb636}
+.dgreen {color: #2e9e3c;}
+
+.line {font-size: 1px; height: 1px; background: #45c64e; }
+
+.graph_bar {height: 5px; background: #38d447; font-size: 1px;}
+
+h1 {margin: 0px 0px 30px 0px; color: #ffffff; font-size: 30px; font-weight: normal;}
+h2 {padding: 0px; font-size: 16px; margin: 20px 0px 8px 0px;}
+h2.title {padding-left: 25px;}
+
+.flag1 {width: 23px; height: 20px; background: url(../images/flag1.gif) no-repeat;}
+.icon {width: 23px; height: 20px; background-repeat: no-repeat;}
+.n1 {background: url(../images/icon1.gif) no-repeat;}
+.n2 {background: url(../images/icon2.gif) no-repeat;}
+.n3 {background: url(../images/icon3.gif) no-repeat;}
+
+.sort {display: block; float: left; height: 18px; width: 17px; margin-left: 5px;}
+.sort.asc {background: url(../images/icon_asc.gif) no-repeat;}
+.sort.desc {background: url(../images/icon_desc.gif) no-repeat;}
+
+.copyright {text-align: right; margin-top: 20px; padding-top: 20px; padding-right: 20px;color: #2e9e3c; border-top: 1px solid #45c64e;}
+.copyright a {color: #2e9e3c; text-decoration: none;}
+.copyright a:hover {color: #ffffff;}
