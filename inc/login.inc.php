@@ -28,11 +28,10 @@ if (isset($_SESSION['user'])){
 		session_destroy();
 		$tpl->assign(array('LOGIN'=>''));		
 	}
-	
-	if ($_SESSION['priv'] & 2 > 0) {
+	if (($_SESSION['priv'] & 2) > 0) {
 		$tpl->assign(array("RESTART_SERVERU"=>1));	
 	}
-        if ($_SESSION['priv'] & 4 > 0) {
+        if (($_SESSION['priv'] & 4) > 0) {
                 $tpl->assign(array("LOKACE"=>1));
         }
 	if ($_SESSION['user'] == "igor") {
@@ -40,7 +39,7 @@ if (isset($_SESSION['user'])){
 	}	
 	
 	
-	if(($param['restart'] == "restart")  && ($_SESSION['priv'] & 2 )) {
+	if(($param['restart'] == "restart")  && (($_SESSION['priv'] & 2) )) {
 		$tpl->assign(array('ERROR'=>"Server se restartuje."));
 /*		exec("/home/nwn/stop.pl");		*/
                 $rs = $db->qy("INSERT INTO server_commands VALUES('','killserver','',NULL,'') ");

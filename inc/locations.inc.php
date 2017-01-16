@@ -133,7 +133,7 @@ if (isset($_SESSION['user'])){
            
             // Check if user can delete this location
             $rs = $db->qy("SELECT * from resman_locations where location = '".$loc_name."' and owner = '".$_SESSION['id']."'");
-            if($rs['rows'] <= 0 && $_SESSION['priv'] & 8 <= 0) {
+            if($rs['rows'] <= 0 && ($_SESSION['priv'] & 8) <= 0) {
               $tpl->assign(array('ERROR'=>"Chyba! Lokace patri nekomu jinemu."));
               return;
             }
@@ -144,7 +144,7 @@ if (isset($_SESSION['user'])){
             unlink( $target_path."gic/".$loc_name.".gic" );
             
             // delete from DB
-            if( $_SESSION['priv'] & 8 > 0)
+            if( ($_SESSION['priv'] & 8) > 0)
               $rs = $db->qy("DELETE FROM resman_locations where location = '".$loc_name."' ");
             else 
               $rs = $db->qy("DELETE FROM resman_locations where location = '".$loc_name."' and owner = '".$_SESSION['id']."'");
@@ -155,7 +155,7 @@ if (isset($_SESSION['user'])){
           $rs = $db->qy("SELECT resman_locations.*, pwplayers.login, pwplayers.id from resman_locations, pwplayers where pwplayers.id = resman_locations.owner");
           $tpl->define_dynamic("location_list","content");
           foreach ($rs['rows'] as $k=>$loc) {
-                if($loc['owner'] == $_SESSION['id'] || $_SESSION['priv'] & 8 > 0)
+                if($loc['owner'] == $_SESSION['id'] || ($_SESSION['priv'] & 8) > 0)
                   $delete_me="<a href=\"?action=delete&loc=".$loc['location']."\">Smazat</a>";
                 else 
                   $delete_me="";
@@ -171,6 +171,7 @@ if (isset($_SESSION['user'])){
           }
 	}
 
+/*        $rs = $db->qy("SELECT ip, login, cdkey, cdkey2, cdkey3, email, noipcheck FROM pfnwn.pwplayers WHERE id = ".$_SESSION['id']." ");*/
 /*        $tpl->assign(array("IPADRESS"=>$rs['rows'][0]['ip'],
                                                         "USER"=>$rs['rows'][0]['login'],
                                                         "CDKEY"=>$cdkey,
